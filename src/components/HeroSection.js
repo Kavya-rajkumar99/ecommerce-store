@@ -13,7 +13,7 @@ const HeroSection = ({data}) => {
             <p>
               An exciting place for the whole family to shop. Discover amazing products and shop with us
             </p>
-            <NavLink>
+            <NavLink to='/products'>
               <Button>Shop Now</Button>
             </NavLink>
           </div>
@@ -29,7 +29,7 @@ const HeroSection = ({data}) => {
         </div>
       </div>
     </Wrapper>
-};
+}
 
 const Wrapper = styled.section`
   padding: 12rem 0;

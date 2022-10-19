@@ -174,6 +174,6 @@ const Nav = () => {
         </div>
       </div>
     </Nav>
-};
+}
 
 export default Nav;
