@@ -65,6 +65,9 @@ a {
 li {
   list-style: none;
 }
+hr{
+  height : 0.1
+}
 ${"" /* resuable code section  */}
 .container {
   max-width: 120rem;
