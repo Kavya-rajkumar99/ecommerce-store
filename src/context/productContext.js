@@ -1,16 +1,29 @@
-import { createContext, useContext, useEffect } from "react";
+import { createContext, useContext, useEffect, useReducer } from "react";
 import axios from "axios";
 
 const ProductContext = createContext();
 
-const API = "https://api.pujakaitem.com/api/products"
+const API = "https://api.pujakaitem.com/api/products";
+
+const initialState = {
+  isLoading: false,
+  isError: false,
+  products: [],
+  featuredProducts: [],
+};
 
 const ProductContextProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   const getProducts = async (url) => {
-    const response = await axios.get(url);
-    console.log(response)
-    const products = await response.data;
+    try {
+      dispatch ({type : "PRODUCTS_FETCH_REQUEST"})
+      const response = await axios.get(url);
+      const products = await response.data;
+      dispatch ({type : "PRODUCTS_FETCH_SUCCESS",payload : products })
+    } catch (error) {
+        dispatch ({type : "PRODUCTS_FETCH_FAILURE"})
+    }
   };
 
   useEffect(() => {
@@ -18,7 +31,7 @@ const ProductContextProvider = ({ children }) => {
   }, []);
 
   return (
-    <ProductContext.Provider value={"Kavya"}>
+    <ProductContext.Provider value={{ ...state }}>
       {children}
     </ProductContext.Provider>
   );
