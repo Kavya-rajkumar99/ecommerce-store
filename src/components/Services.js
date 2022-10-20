@@ -42,7 +42,7 @@ const Services = () => {
   );
 };
 const Wrapper = styled.section`
-  padding-bottom: 9rem;
+  padding: 9rem 0;
 
   .grid {
     gap: 4.8rem;
