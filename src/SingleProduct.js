@@ -1,8 +1,26 @@
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
+import { useProductContext } from "./context/productContext";
+
+const API = `https://api.pujakaitem.com/api/products`;
 
 const SingleProduct = () => {
-  return <div>SingleProduct</div>;
-}
+  const { getSingleProduct, singleProduct } = useProductContext();
+  // console.log(singleProduct);
+  const {id : productId,name,company,price,description,category,stock,reviews,stars} = singleProduct
+  const { id } = useParams();
+
+  useEffect(() => {
+    getSingleProduct(`${API}?id=${id}`);
+  }, []);
+
+  return (
+    <Wrapper>
+      <h1>SingleProduct {name} </h1>
+    </Wrapper>
+  );
+};
 
 const Wrapper = styled.section`
   .container {
