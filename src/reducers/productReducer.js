@@ -17,6 +17,21 @@ const productReducer = (state,action) =>{
         isLoading : false,
         isError : true
     }
+    case "SINGLE_PRODUCT_FETCH_REQUEST" : return {
+        ...state,
+        isProductLoading : true
+    }
+    case "SINGLE_PRODUCT_FETCH_SUCCESS" : return {
+        ...state,
+        isProductLoading : false,
+        singleProduct : action.payload
+    }
+    case "SINGLE_PRODUCT_FETCH_FAILURE" : return {
+        ...state,
+        isProductLoading : false,
+        isProductError : true
+    }
+    
     default : return state
    }
 }
