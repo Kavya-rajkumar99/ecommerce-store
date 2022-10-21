@@ -11,6 +11,9 @@ const initialState = {
   isError: false,
   products: [],
   featuredProducts: [],
+  isProductLoading : false,
+  isProductError : false,
+  singleProduct : {}
 };
 
 const ProductContextProvider = ({ children }) => {
@@ -27,19 +30,31 @@ const ProductContextProvider = ({ children }) => {
     }
   };
 
+  const getSingleProduct = async(url) => {
+    try{
+      dispatch({type : "SINGLE_PRODUCT_FETCH_REQUEST"})
+      const response = await axios.get(url)
+      const singleProduct = await response.data
+      dispatch({type : "SINGLE_PRODUCT_FETCH_SUCCESS",payload : singleProduct})
+    }
+    catch(error){
+      dispatch({type : "SINGLE_PRODUCT_FETCH_FAILURE"})
+    }
+  }
+
   useEffect(() => {
     getProducts(API);
   }, []);
 
   return (
-    <ProductContext.Provider value={{ ...state }}>
+    <ProductContext.Provider value={{ ...state , getSingleProduct}}>
       {children}
     </ProductContext.Provider>
   );
 };
 
-const useProviderContext = () => {
+const useProductContext = () => {
   return useContext(ProductContext);
 };
 
-export { ProductContextProvider, useProviderContext };
+export { ProductContextProvider, useProductContext };
