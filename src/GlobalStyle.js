@@ -69,6 +69,13 @@ li {
 hr{
   height : 0.1
 }
+.page_loading {
+  font-size: 3.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top : 2rem;
+}
 ${"" /* resuable code section  */}
 .container {
   max-width: 120rem;
