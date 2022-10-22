@@ -11,8 +11,8 @@ root.render(
   <React.StrictMode>
     <ProductContextProvider>
       <FilterContextProvider>
-     <App />
-     </FilterContextProvider>
+        <App />
+      </FilterContextProvider>
     </ProductContextProvider>
   </React.StrictMode>
 );
