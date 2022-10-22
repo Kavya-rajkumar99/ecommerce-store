@@ -9,6 +9,8 @@ import { Container } from "./styles/Container";
 import { MdSecurity } from "react-icons/md";
 import { TbTruckDelivery, TbReplace } from "react-icons/tb";
 import {FaShippingFast} from "react-icons/fa";
+import Rating from "./components/Rating";
+import AddToCart from "./components/AddToCart";
 
 const API = `https://api.pujakaitem.com/api/products`;
 
@@ -50,8 +52,9 @@ const SingleProduct = () => {
           </div>
           <div className="product-data">
             <h2>{name}</h2>
-            <p>{stars}</p>
-            <p>{reviews} reviews</p>
+            <Rating stars={stars} reviews={reviews} />
+            {/* <p>{stars}</p>
+            <p>{reviews} reviews</p> */}
             <p className="product-data-price">
               MRP :{" "}
               <del>
@@ -95,6 +98,10 @@ const SingleProduct = () => {
                 Brand : <span>{company}</span>
               </p>
             </div>
+            <hr />
+            {
+              stock > 0 && <AddToCart product={singleProduct}/>
+            }
           </div>
         </div>
       </Container>
@@ -155,10 +162,10 @@ const Wrapper = styled.section`
     }
     hr {
       max-width: 100%;
-      width: 90%;
-      /* height: 0.2rem; */
-      border: 0.1rem solid #000;
-      color: red;
+       width: 90%;
+      // /* height: 0.2rem; */
+       border: 0.1rem solid #000;
+       color: red;
     }
 
   }
