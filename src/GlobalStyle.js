@@ -109,15 +109,15 @@ ${"" /* resuable code section  */}
       color: #5138ee;
     }
    .caption {
-      position: absolute;
-      top: 15%;
-      right: 10%;
-      text-transform: uppercase;
-      background-color: ${({ theme }) => theme.colors.bg};
-      color: ${({ theme }) => theme.colors.helper};
-      padding: 0.8rem 2rem;
-      font-size: 1.2rem;
-      border-radius: 2rem;
+       position: absolute;
+       top: 15%;
+       right: 10%;
+       text-transform: uppercase;
+       background-color: ${({ theme }) => theme.colors.bg};
+       color: ${({ theme }) => theme.colors.helper};
+       padding: 0.8rem 2rem;
+       font-size: 1.2rem;
+       border-radius: 2rem;
     }
 input, textarea{
     max-width: 50rem;
